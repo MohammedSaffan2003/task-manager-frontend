@@ -25,33 +25,79 @@
 ); -->
 
   <div class="container">
-    <div class="mb-4">
-      <h3>Add New Task</h3>
-      <form id="taskForm">
-        <div class="mb-3">
-          <label for="taskName" class="form-label">Task Name</label>
-          <input type="text" class="form-control" id="taskName" required>
+    <!-- Add tabs -->
+    <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="tasks-tab" data-bs-toggle="tab" data-bs-target="#tasks" type="button" role="tab" aria-controls="tasks" aria-selected="true">Add New Task</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Dashboard</button>
+      </li>
+    </ul>
+    
+    <!-- Tab content -->
+    <div class="tab-content" id="myTabContent">
+      <!-- Tasks tab -->
+      <div class="tab-pane fade show active" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
+        <div class="mb-4">
+          <h3>Add New Task</h3>
+          <form id="taskForm">
+            <div class="mb-3">
+              <label for="taskName" class="form-label">Task Name</label>
+              <input type="text" class="form-control" id="taskName" required>
+            </div>
+            <div class="mb-3">
+              <label for="taskDescription" class="form-label">Task Description</label>
+              <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="taskStatus" class="form-label">Task Status</label>
+              <select class="form-select" id="taskStatus">
+                <option value="not-started">Not Started</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="taskDueDate" class="form-label">Due Date</label>
+              <input type="date" class="form-control" id="taskDueDate">
+            </div>
+            <button type="submit" class="btn btn-primary">Add Task</button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label for="taskDescription" class="form-label">Task Description</label>
-          <textarea class="form-control" id="taskDescription" rows="3"></textarea>
+      </div>
+      
+      <!-- Dashboard tab -->
+      <div class="tab-pane fade" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Total Tasks</h5>
+                <p class="card-text display-4" id="totalTasks">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-warning mb-3">
+              <div class="card-body">
+                <h5 class="card-title">In Progress</h5>
+                <p class="card-text display-4" id="inProgressTasks">0</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card text-white bg-success mb-3">
+              <div class="card-body">
+                <h5 class="card-title">Completed</h5>
+                <p class="card-text display-4" id="completedTasks">0</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="taskStatus" class="form-label">Task Status</label>
-          <select class="form-select" id="taskStatus">
-            <option value="not-started">Not Started</option>
-            <option value="in-progress">In Progress</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="taskDueDate" class="form-label">Due Date</label>
-          <input type="date" class="form-control" id="taskDueDate">
-        </div>
-        <button type="submit" class="btn btn-primary">Add Task</button>
-      </form>
+      </div>
     </div>
-
+    
     <hr>
 
     <h3>Task List</h3>

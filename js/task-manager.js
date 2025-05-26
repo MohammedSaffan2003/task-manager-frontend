@@ -63,10 +63,14 @@ document.addEventListener('DOMContentLoaded', () => {
   
   async function loadTasks() {
     const response = await fetch('http://localhost:8080/api/tasks');
-    const data = await response.json();
+    const tasks = await response.json();
+
+    // Update dashboard statistics
+    updateDashboardStats(tasks);
+
     const taskTableBody = document.querySelector('#taskTable tbody');
     taskTableBody.innerHTML = '';
-    data.forEach(task => {
+    tasks.forEach(task => {
       const row = document.createElement('tr');
       row.innerHTML = `
         <td>${task.id}</td>
@@ -85,7 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
     addDeleteListeners();
     addEditListeners();
   }
-  
+
+  // Function to update dashboard statistics
+  function updateDashboardStats(tasks) {
+    const totalTasks = tasks.length;
+    const inProgressTasks = tasks.filter(task => task.status === 'in-progress').length;
+    const completedTasks = tasks.filter(task => task.status === 'completed').length;
+
+    document.getElementById('totalTasks').textContent = totalTasks;
+    document.getElementById('inProgressTasks').textContent = inProgressTasks;
+    document.getElementById('completedTasks').textContent = completedTasks;
+  }
+
   function addDeleteListeners() {
     document.querySelectorAll('.btn-delete').forEach(button => {
       button.addEventListener('click', async (e) => {
@@ -134,4 +149,3 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     return statusLabels[status] || status;
   }
-  
