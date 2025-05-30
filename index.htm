@@ -59,12 +59,18 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="taskDueDate" class="form-label">Due Date</label>
-              <input type="date" class="form-control" id="taskDueDate">
-            </div>
+  <label for="taskDueDate" class="form-label w-100" style="cursor: pointer;">Due Date</label>
+  <input type="date" class="form-control w-100" id="taskDueDate">
+</div>
+	
             <button type="submit" class="btn btn-primary">Add Task</button>
           </form>
         </div>
+	<hr>
+    <div id="motivationalQuote" class="text-center mb-4">
+      <h4>Motivational Quote</h4>
+      <p id="quoteText" class="lead"></p>
+    </div>
       </div>
       
       <!-- Dashboard tab -->
@@ -95,29 +101,26 @@
             </div>
           </div>
         </div>
+        <h3>Task List</h3>
+        <table class="table table-bordered" id="taskTable">
+          <thead>
+            <tr>
+              <!-- <th>ID</th> -->
+              <th>Title</th>
+              <th>Description</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Actions</th>
+              <!-- <th>Edit</th> add from js -->
+              <!-- <th>Delete</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated by JavaScript -->
+          </tbody>
+        </table>
       </div>
     </div>
-    
-    <hr>
-
-    <h3>Task List</h3>
-    <table class="table table-bordered" id="taskTable">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th>Status</th>
-          <th>Due Date</th>
-          <th>Actions</th>
-          <!-- <th>Edit</th> add from js -->
-          <!-- <th>Delete</th> -->
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Populated by JavaScript -->
-      </tbody>
-    </table>
   </div>
   <!-- Edit Task Modal -->
   <div class="modal fade" id="editTaskModal" tabindex="-1" aria-labelledby="editTaskModalLabel" aria-hidden="true">
