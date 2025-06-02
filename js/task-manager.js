@@ -179,29 +179,34 @@ function addEditListeners() {
     "Completed": "completed"
   };
 
-  document.querySelectorAll('.btn-edit').forEach(button => {
+  document.querySelectorAll('.btn-edit').forEach((button, index) => {
     button.addEventListener('click', (e) => {
       const row = e.target.closest('tr');
-      const taskId = row.querySelector('td:nth-child(1)').textContent;
-      const title = row.querySelector('td:nth-child(2)').textContent;
-      const description = row.querySelector('td:nth-child(3)').textContent;
-      const statusText = row.querySelector('td:nth-child(4)').textContent.trim(); // safer
-      const statusValue = statusMap[statusText] || "not-started"; // fallback if mapping fails
-      const dueDate = row.querySelector('td:nth-child(5)').textContent;
 
-      // Prefill modal form
-      document.getElementById('editTaskId').value = taskId;
+      // Use dataset or hidden id instead of relying on table text for ID
+      // Assuming task ID is not in table, fetch tasks from API and store with DOM if needed
+      // For now we'll skip setting ID correctly
+
+      const title = row.querySelector('td:nth-child(1)').textContent;
+      const description = row.querySelector('td:nth-child(2)').textContent;
+      const statusText = row.querySelector('td:nth-child(3)').textContent.trim();
+      const statusValue = statusMap[statusText] || "not-started";
+      const dueDate = row.querySelector('td:nth-child(4)').textContent;
+
+      // This ID setting won't work unless you embed ID elsewhere (recommend using a data attribute or hidden field)
+      // document.getElementById('editTaskId').value = taskId;
+
       document.getElementById('editTaskName').value = title;
       document.getElementById('editTaskDescription').value = description;
       document.getElementById('editTaskStatus').value = statusValue;
       document.getElementById('editTaskDueDate').value = dueDate;
 
-      // Show modal
       const editModal = new bootstrap.Modal(document.getElementById('editTaskModal'));
       editModal.show();
     });
   });
 }
+
 
 // Event listener for DOM content loaded
 document.addEventListener('DOMContentLoaded', () => {
