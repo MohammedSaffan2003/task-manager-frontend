@@ -2,6 +2,8 @@
 
 A simple and intuitive Task Manager web application that helps you organize and track your tasks efficiently. This application allows you to create, read, update, and delete tasks, along with viewing task statistics on a dashboard.
 
+> Backend repo - https://github.com/MohammedSaffan2003/task-manager-backend
+
 ## Features
 
 - **Task Management**: Create, view, edit, and delete tasks
@@ -32,8 +34,8 @@ A simple and intuitive Task Manager web application that helps you organize and 
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd task-manager-fd
+   git clone git@github.com:MohammedSaffan2003/task-manager-frontend.git
+   cd task-manager-frontend
    ```
 
 2. **Set up the backend**
